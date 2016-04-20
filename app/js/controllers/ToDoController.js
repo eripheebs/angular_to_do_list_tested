@@ -3,8 +3,8 @@ toDoApp.controller('ToDoController', [function() {
 
   self.toDos = [{text: "ToDo1", completed: true}, {text: "ToDo2", compelted: false}];
 
-  self.addToDo = function(todo){
-    self.toDos.push(todo);
+  self.addToDo = function(toDoText){
+    self.toDos.push({text: toDoText, completed: false});
   }
 
 }]);

@@ -9,9 +9,13 @@
   </head>
   <body>
     <div id="todo" ng-controller="ToDoController as controller">
-      <p ng-repeat="todo in controller.toDos">
-        {{ todo.text }}
-      </p>
+        <p ng-repeat="todo in controller.toDos">
+          {{ todo.text }}
+        </p>
+      <form ng-submit="controller.addToDo(toDoText)">
+        <input id="addToDo" type ="text" ng-model="toDoText" placeholder="add todo here">
+        <input id="submitToDo" type="submit" value="Submit">
+      </form>
     </div>
   </body>
 </html>

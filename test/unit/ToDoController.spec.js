@@ -5,7 +5,6 @@ describe('ToDoController', function() {
 
   beforeEach(inject(function($controller) {
     ctrl = $controller('ToDoController');
-    todo = {text: "ToDo3", completed: false}
   }));
 
   it('initialises with an array with two todos', function() {
@@ -14,7 +13,7 @@ describe('ToDoController', function() {
   });
 
   it('can add a todo', function(){
-    ctrl.addToDo(todo)
-    expect(ctrl.toDos).toContain(todo)
+    ctrl.addToDo("ToDo3")
+    expect(ctrl.toDos).toContain({text: "ToDo2", completed: false})
   })
 });
