@@ -1,7 +1,20 @@
 describe('ToDoController', function() {
   beforeEach(module('toDoApp'));
 
-  var ctrl;
+  var mockFactory = function(toDoText) {
+    var Todo = function(toDoText) {
+      this.text = toDoText
+      this.completed = false;
+    }
+
+    Todo.prototype.complete = function(){
+      this.completed = true;
+    }
+
+    return Todo
+  };
+
+  var ctrl = ('ToDoController', {toDoFactory: mockFactory});
 
   beforeEach(inject(function($controller) {
     ctrl = $controller('ToDoController');
@@ -14,7 +27,9 @@ describe('ToDoController', function() {
 
   it('can add a todo', function(){
     ctrl.addToDo("ToDo3")
-    expect(ctrl.toDos).toContain({text: "ToDo3", completed: false})
+    todo = ctrl.toDos.pop()
+    expect(todo.text).toEqual("ToDo3")
+    expect(todo.completed).toEqual(false)
   })
 
   it('can delete a todo', function() {

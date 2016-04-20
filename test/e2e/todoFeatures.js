@@ -1,9 +1,9 @@
 describe('Todos tracker', function() {
   it('has todos', function() {
     browser.get('/');
-    var todo = $('#todo');
-    expect(todo.getText()).toContain('ToDo1');
-    expect(todo.getText()).toContain('ToDo2');
+    var todos = $$('#todo p');
+    expect(todos.first().getText()).toContain('ToDo1: completed');
+    expect(todos.last().getText()).toContain('ToDo2: not completed');
   });
 
   it('can add a todo', function(){
