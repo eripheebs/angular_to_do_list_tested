@@ -7,12 +7,8 @@ describe('ToDoController', function() {
     ctrl = $controller('ToDoController');
   }));
 
-  it('initialises with an array of todos', function() {
-    expect(ctrl.todos).toContain("ToDo1");
-  });
-
   it('initialises with an array with two todos', function() {
-    expect(ctrl.todos).toEqual(["ToDo1", "ToDo2"]);
+    expect(ctrl.todos).toEqual([{text: "ToDo1", completed: true}, {text: "ToDo2", compelted: false}]);
   });
 
 });
