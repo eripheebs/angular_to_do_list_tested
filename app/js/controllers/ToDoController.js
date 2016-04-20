@@ -7,4 +7,9 @@ toDoApp.controller('ToDoController', [function() {
     self.toDos.push({text: toDoText, completed: false});
   }
 
+  self.deleteToDo = function(todo) {
+    var index = self.toDos.indexOf(todo);
+    self.toDos.splice(index, 1);
+  }
+
 }]);

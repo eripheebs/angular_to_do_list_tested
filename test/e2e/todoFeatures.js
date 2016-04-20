@@ -11,6 +11,13 @@ describe('Todos tracker', function() {
     $('#addToDo').sendKeys('ToDo3');
     $('#submitToDo').click();
     var todo = $$('#todo p').last();
-    expect(todo.getText()).toEqual('ToDo3');
+    expect(todo.getText()).toContain('ToDo3');
+  })
+
+  it('can delete todo', function(){
+    browser.get('/');
+    var todo = $('#todo');
+    $('#deleteToDo').click();
+    expect(todo.getText()).not.toContain('ToDo1')
   })
 });

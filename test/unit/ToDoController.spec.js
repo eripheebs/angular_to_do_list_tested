@@ -14,6 +14,13 @@ describe('ToDoController', function() {
 
   it('can add a todo', function(){
     ctrl.addToDo("ToDo3")
-    expect(ctrl.toDos).toContain({text: "ToDo2", completed: false})
+    expect(ctrl.toDos).toContain({text: "ToDo3", completed: false})
   })
+
+  it('can delete a todo', function() {
+    todo = {text: "fake todo", completed: false}
+    ctrl.toDos.push(todo);
+    ctrl.deleteToDo(todo)
+    expect(ctrl.toDos).not.toContain(todo)
+  });
 });
