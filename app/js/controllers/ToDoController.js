@@ -1,7 +1,7 @@
 toDoApp.controller('ToDoController', ['ToDoFactory', function(ToDoFactory) {
   var self = this
 
-  self.toDos = [{text: "ToDo1", completed: true}, {text: "ToDo2", compelted: false}];
+  self.toDos = [new ToDoFactory('ToDo1', true), new ToDoFactory('ToDo2', false)];
 
   self.addToDo = function(toDoText){
     self.toDos.push(new ToDoFactory(toDoText));
@@ -15,14 +15,14 @@ toDoApp.controller('ToDoController', ['ToDoFactory', function(ToDoFactory) {
 }]);
 
 toDoApp.factory('ToDoFactory', function(){
-  var Todo = function(toDoText) {
+  var ToDo = function(toDoText, completed) {
     this.text = toDoText
-    this.completed = false;
+    this.completed = (typeof completed !== 'undefined') ? completed : false;
   }
 
-  Todo.prototype.complete = function(){
+  ToDo.prototype.complete = function() {
     this.completed = true;
-  }
+  };
 
-  return Todo
+  return ToDo
 });

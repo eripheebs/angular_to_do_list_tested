@@ -1,23 +1,11 @@
 describe('ToDoController', function() {
   beforeEach(module('toDoApp'));
 
-  var mockFactory = function(toDoText) {
-    var Todo = function(toDoText) {
-      this.text = toDoText
-      this.completed = false;
-    }
+  var ctrl, ToDoFactory;
 
-    Todo.prototype.complete = function(){
-      this.completed = true;
-    }
-
-    return Todo
-  };
-
-  var ctrl = ('ToDoController', {toDoFactory: mockFactory});
-
-  beforeEach(inject(function($controller) {
+  beforeEach(inject(function($controller, _ToDoFactory_) {
     ctrl = $controller('ToDoController');
+    ToDoFactory = _ToDoFactory_;
   }));
 
   it('initialises with an array with two todos', function() {
